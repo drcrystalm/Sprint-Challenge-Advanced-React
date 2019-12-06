@@ -2,6 +2,8 @@ import React from "react"
 import ReactDOM from "react-dom"
 import axios from "axios"
 import PlayerCard from "./PlayerCard"
+import Header from "./Header"
+import "./App.css"
 
 class App extends React.Component {
     constructor() {
@@ -25,17 +27,19 @@ class App extends React.Component {
         return (
             <>
                 <div className='App'>
-                    <h1>All the Players</h1>
-                </div>
-                <div className='players'>
-                    {players.map(player => {
-                        return (
-                            <PlayerCard
-                                key={this.player.id}
-                                name={this.player.name}
-                            />
-                        )
-                    })}
+                    <Header />
+
+                    <div className='players'>
+                        {this.state.players.map(player => {
+                            return (
+                                <PlayerCard
+                                    key={player.id}
+                                    name={player.name}
+                                    country={player.country}
+                                />
+                            )
+                        })}
+                    </div>
                 </div>
             </>
         )
